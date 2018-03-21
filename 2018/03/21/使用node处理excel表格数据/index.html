@@ -79,12 +79,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Herman">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="如何用nodejs处理excel表格数据 比如合并 排序 以及如何导入到echarts中进行处理  所需模块及方法内部模块 fs writeFileSync 同步写文件 readdirSync 同步读取文件夹 readFileSync 同步读取文件   path resolve 把一个路径或路径片段的序列解析为一个绝对路径 join 使用平台特定的分隔符把全部给定的 path 片段连接到一起，并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用node处理excel表格数据">
+<meta property="og:url" content="http://yoursite.com/2018/03/21/使用node处理excel表格数据/index.html">
 <meta property="og:site_name" content="Herman">
+<meta property="og:description" content="如何用nodejs处理excel表格数据 比如合并 排序 以及如何导入到echarts中进行处理  所需模块及方法内部模块 fs writeFileSync 同步写文件 readdirSync 同步读取文件夹 readFileSync 同步读取文件   path resolve 把一个路径或路径片段的序列解析为一个绝对路径 join 使用平台特定的分隔符把全部给定的 path 片段连接到一起，并">
+<meta property="og:updated_time" content="2018-03-21T11:35:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Herman">
+<meta name="twitter:title" content="使用node处理excel表格数据">
+<meta name="twitter:description" content="如何用nodejs处理excel表格数据 比如合并 排序 以及如何导入到echarts中进行处理  所需模块及方法内部模块 fs writeFileSync 同步写文件 readdirSync 同步读取文件夹 readFileSync 同步读取文件   path resolve 把一个路径或路径片段的序列解析为一个绝对路径 join 使用平台特定的分隔符把全部给定的 path 片段连接到一起，并">
 
 
 
@@ -114,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/21/使用node处理excel表格数据/"/>
 
 
 
 
 
-  <title>Herman</title>
+  <title>使用node处理excel表格数据 | Herman</title>
   
 
 
@@ -139,8 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,9 +216,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -245,9 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/21/使用node处理excel表格数据/" itemprop="url">使用node处理excel表格数据</a></h1>
+          <h1 class="post-title" itemprop="name headline">使用node处理excel表格数据</h1>
         
 
         <div class="post-meta">
@@ -297,9 +298,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>如何用nodejs处理excel表格数据 比如合并 排序 以及如何导入到echarts中进行处理</p>
 </blockquote>
 <h2 id="所需模块及方法"><a href="#所需模块及方法" class="headerlink" title="所需模块及方法"></a>所需模块及方法</h2><h3 id="内部模块"><a href="#内部模块" class="headerlink" title="内部模块"></a>内部模块</h3><ul>
@@ -367,8 +366,6 @@
 </li>
 </ul>
 
-          
-        
       
     </div>
     
@@ -385,12 +382,12 @@
       
 
       
+      
+      
 
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -400,10 +397,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -411,6 +409,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -431,8 +433,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -474,6 +485,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#所需模块及方法"><span class="nav-number">1.</span> <span class="nav-text">所需模块及方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内部模块"><span class="nav-number">1.1.</span> <span class="nav-text">内部模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部模块"><span class="nav-number">1.2.</span> <span class="nav-text">外部模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo1"><span class="nav-number">2.</span> <span class="nav-text">demo1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo2"><span class="nav-number">3.</span> <span class="nav-text">demo2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo3"><span class="nav-number">4.</span> <span class="nav-text">demo3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件结构"><span class="nav-number">5.</span> <span class="nav-text">文件结构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -614,6 +641,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
