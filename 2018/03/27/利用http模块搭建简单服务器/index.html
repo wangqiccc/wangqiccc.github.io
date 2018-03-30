@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/27/利用http模块搭建简单服务器/index.html">
 <meta property="og:site_name" content="Herman">
 <meta property="og:description" content="可以处理文件请求和ajax请求  所需模块及方法内部模块 request request(url,callback) 请求某个地址 在回调函数总处理数据   http  createServer  创建一个服务器   path resolve 把一个路径或路径片段的序列解析为一个绝对路径   fs readFileSync 同步读取文件   queryString parse 将查询字符串序列化">
-<meta property="og:updated_time" content="2018-03-27T10:59:39.000Z">
+<meta property="og:updated_time" content="2018-03-30T04:04:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用http模块搭建简单服务器">
 <meta name="twitter:description" content="可以处理文件请求和ajax请求  所需模块及方法内部模块 request request(url,callback) 请求某个地址 在回调函数总处理数据   http  createServer  创建一个服务器   path resolve 把一个路径或路径片段的序列解析为一个绝对路径   fs readFileSync 同步读取文件   queryString parse 将查询字符串序列化">
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-27T18:51:13+08:00">
                 2018-03-27
@@ -319,7 +319,11 @@
 </ul>
 </li>
 <li>queryString<ul>
-<li>parse 将查询字符串序列化为对象<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> request=<span class="built_in">require</span>(<span class="string">"request"</span>);</span><br><span class="line"><span class="keyword">let</span> http=<span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">let</span> path=<span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">let</span> fs=<span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">let</span> queryString=<span class="built_in">require</span>(<span class="string">"querystring"</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">res,date</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> url=<span class="string">`http://matchweb.sports.qq.com/kbs/list?from=NBA_PC&amp;columnId=100000&amp;startTime=<span class="subst">$&#123;date&#125;</span>&amp;endTime=<span class="subst">$&#123;date&#125;</span>&amp;callback=ajaxExec&amp;_=1521695245706`</span>;</span><br><span class="line">    request(url, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line"><span class="meta">        "use strict"</span>;</span><br><span class="line">        <span class="keyword">if</span> (!err &amp;&amp; response.statusCode === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> data=body.slice(<span class="number">9</span>, <span class="number">-1</span>);</span><br><span class="line">            res.end(data);</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> file;</span><br><span class="line">    <span class="keyword">if</span>(req.url === <span class="string">"/favicon.ico"</span>)&#123;</span><br><span class="line">        res.end(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(req.url===<span class="string">"/"</span>) &#123;</span><br><span class="line">        res.writeHead(<span class="string">"200"</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html"</span>&#125;);</span><br><span class="line">        file=fs.readFileSync(path.resolve(<span class="string">"./public/index.html"</span>));</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="regexp">/\/api.*/</span>.test(req.url))&#123;</span><br><span class="line">        res.writeHead(<span class="string">"200"</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/json"</span>&#125;);</span><br><span class="line">        <span class="keyword">let</span> query=<span class="regexp">/\?.*/</span>.exec(req.url)[<span class="number">0</span>].slice(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">let</span> data=queryString.parse(query).val;</span><br><span class="line">        getData(res,data);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/\.js$/</span>.test(req.url)) &#123;</span><br><span class="line">             res.writeHead(<span class="string">"200"</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/javascript"</span>&#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/\.css$/</span>.test(req.url)) &#123;</span><br><span class="line">             res.writeHead(<span class="string">"200"</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/css"</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        file=fs.readFileSync(path.resolve(path.join(<span class="string">"./public/"</span>, req.url)));</span><br><span class="line">    &#125;</span><br><span class="line">    res.end(file);</span><br><span class="line">&#125;).listen(<span class="number">8080</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"服务器开启成功"</span>);</span><br></pre></td></tr></table></figure>
+<li>parse 将查询字符串序列化为对象</li>
+</ul>
+</li>
+<li>url<ul>
+<li>parse 将请求url序列化<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> request=<span class="built_in">require</span>(<span class="string">"request"</span>);</span><br><span class="line"><span class="keyword">let</span> http=<span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">let</span> path=<span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">let</span> fs=<span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">let</span> url=<span class="built_in">require</span>(<span class="string">"url"</span>);</span><br><span class="line"><span class="keyword">let</span> queryString=<span class="built_in">require</span>(<span class="string">"querystring"</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">res,date</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> url=<span class="string">`http://matchweb.sports.qq.com/kbs/list?from=NBA_PC&amp;columnId=100000&amp;startTime=<span class="subst">$&#123;date&#125;</span>&amp;endTime=<span class="subst">$&#123;date&#125;</span>&amp;callback=ajaxExec&amp;_=1521695245706`</span>;</span><br><span class="line">    request(url, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line"><span class="meta">        "use strict"</span>;</span><br><span class="line">        <span class="keyword">if</span> (!err &amp;&amp; response.statusCode === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> data=body.slice(<span class="number">9</span>, <span class="number">-1</span>);</span><br><span class="line">            res.end(data);</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> file;</span><br><span class="line">    <span class="keyword">if</span>(req.url === <span class="string">"/favicon.ico"</span>)&#123;</span><br><span class="line">        res.end(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(req.url===<span class="string">"/"</span>) &#123;</span><br><span class="line">        res.writeHead(<span class="string">"200"</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html"</span>&#125;);</span><br><span class="line">        file=fs.readFileSync(path.resolve(<span class="string">"./public/index.html"</span>));</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="regexp">/\/api.*/</span>.test(req.url))&#123;</span><br><span class="line">        res.writeHead(<span class="string">"200"</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/json"</span>&#125;);</span><br><span class="line">        <span class="keyword">let</span> result=url.parse(req.url);</span><br><span class="line">        <span class="keyword">let</span> query=result.query;</span><br><span class="line">        <span class="keyword">let</span> data=queryString.parse(query).val;</span><br><span class="line">        getData(res,data);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/\.js$/</span>.test(req.url)) &#123;</span><br><span class="line">             res.writeHead(<span class="string">"200"</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/javascript"</span>&#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/\.css$/</span>.test(req.url)) &#123;</span><br><span class="line">             res.writeHead(<span class="string">"200"</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/css"</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        file=fs.readFileSync(path.resolve(path.join(<span class="string">"./public/"</span>, req.url)));</span><br><span class="line">    &#125;</span><br><span class="line">    res.end(file);</span><br><span class="line">&#125;).listen(<span class="number">8080</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"服务器开启成功"</span>);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -481,10 +485,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -505,7 +509,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -571,7 +575,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
